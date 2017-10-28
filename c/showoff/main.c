@@ -106,6 +106,9 @@ int main(int argc, char **argv)
 
     printf("Environment variable PATH: %s.\n",getenv("PATH"));
 
+    printf("My source code file is called %s and this print command is on the %ith line.\n",__BASE_FILE__,__LINE__);
+    printf("Compiler version is %s.\n",__VERSION__);
+
     t1 = clock();
     factorial_recursive(FACTORIAL_OF);
     t2 = clock();
