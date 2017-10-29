@@ -1,5 +1,8 @@
 #!/usr/bin/ruby
 require "open-uri"
+require "cmath"
+require "date"
+require "tracer"
 
 $FACTORIAL_OF = 10
 $SORT_LENGTH = 10000
@@ -65,11 +68,21 @@ def print_header(title,character=?-)
   puts ""
 end
 
+def recurse(depth)
+  if depth <= 0
+    puts "recursion bottom"
+  else
+    recurse depth - 1
+  end
+end
+
 #=========================== MAIN ==============================
 
 print_header "Showing off the power of Ruby!", ?~
 
 print_header "general"
+
+puts "Today is #{DateTime.now} and your platform is #{RUBY_PLATFORM}."
 
 t1 = Time.now
 factorial_recursive($FACTORIAL_OF)
@@ -80,6 +93,15 @@ t1 = Time.now
 factorial_iterative($FACTORIAL_OF)
 t2 = Time.now
 puts "Factorial of #{$FACTORIAL_OF} iteratively: #{t2 - t1} seconds."
+
+puts ""
+puts "Tracing recursive function call:"
+
+Tracer.on {
+  recurse 1
+}
+
+puts ""
 
 begin
   print "If I divide by zero... "
@@ -99,21 +121,36 @@ sort_data = Array.new
 #end
 
 #t1 = Time.now
-#bubble_sort(sort_data)
+#bubble_sort sort_data
 #t2 = Time.now
 
 #puts "It took me #{t2 - t1} seconds to sort an array of length #{$SORT_LENGTH} with bubble sort."
 
+puts "Sleep for 1 second."
+Kernel::sleep 1
+
 print_header "networking"
 
-url = "http://google.com"
+#url = "http://google.com"
 
-puts "I'm downloading #{url}..."
+#puts "I'm downloading #{url}..."
 
-begin
-  open("http://google.com") {|f|
-    puts "The html is #{f.length}" " characters long."
-  }
-rescue
-  puts "I couldn't do it."
+#begin
+#  open("http://google.com") {|f|
+#  puts "The html is #{f.length}" " characters long."
+#  }
+#rescue
+#  puts "I couldn't do it."
+#end
+
+print_header "math"
+
+puts "e^(i * pi) + 1 = #{CMath.exp(1i * Math::PI) + 1}"
+
+print "sin :"
+
+for i in (0...15)
+  print "%.2f " % Math::sin(i / 15.0 * Math::PI * 2.0)
 end
+
+puts "---------------------"
