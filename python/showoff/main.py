@@ -13,6 +13,7 @@ import urllib2
 import traceback
 
 FACTORIAL_OF = 10
+SORT_LENGTH = 10000
 
 class MyClass(object):
   num_of_objects = 0
@@ -44,6 +45,12 @@ def factorial_iterative(n):
  
   return result
 
+def bubble_sort(data):
+  for i in range(len(data)):
+    for j in range(len(data) - i - 1):
+      if (data[j] > data[j + 1]):
+        data[j], data[j + 1] = data[j + 1], data[j]  # swap
+
 def print_header(text, underscore="-"):
   print("\n" + text + "\n" + len(text) * underscore)
 
@@ -72,7 +79,9 @@ sequence = [random.randint(1,10) for i in range(10)]
 print("10 random number sequence from 1 to 10: " + str(sequence))
 random.shuffle(sequence)
 print("the same sequence randomly shuffled: " + str(sequence))
+
 sequence.sort()
+
 print("and the same sequence sorted: " + str(sequence))
 
 sentence = "Hello world."
@@ -84,6 +93,17 @@ print("Your platform type is " + platform.machine() + " with " + platform.proces
       platform.system() + " OS, Python version is " + platform.python_version() + " (" + platform.python_implementation() + ").")
 
 print_stack(3)
+
+sort_data = []
+
+for i in range(SORT_LENGTH):
+  sort_data.append((SORT_LENGTH - i) % (SORT_LENGTH / 4))
+
+t1 = time.time()
+bubble_sort(sort_data)
+t2 = time.time()
+
+print("It took me " + str(t2 - t1) + " seconds to sort a list of length " + str(SORT_LENGTH) + " with bubble sort.")
 
 print("")
 
