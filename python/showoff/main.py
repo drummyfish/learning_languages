@@ -105,6 +105,12 @@ t2 = time.time()
 
 print("It took me " + str(t2 - t1) + " seconds to sort a list of length " + str(SORT_LENGTH) + " with bubble sort.")
 
+try:
+  print("If I try to divide by zero... ")
+  a = 10 / 0
+except Exception as e:
+  print("there will be an exception: " + str(e) + ".")
+
 print("")
 
 object1 = MyClass("object1")

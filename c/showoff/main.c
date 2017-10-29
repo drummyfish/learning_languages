@@ -26,6 +26,8 @@
 
 #define time_diff(t1,t2) ((double) (t2 - t1) / ((double) CLOCKS_PER_SEC))
 
+int line_count();         // forward declaration
+
 int factorial_recursive(int n)
   {
     return n <= 1 ? 1 : n * factorial_recursive(n - 1); 
@@ -85,6 +87,8 @@ int main(int argc, char **argv)
     printf("Showing off the power of C!\n");
     print_separator('~',27);
 
+    printf("My source code file is called %s and has %i lines. This is line %i.\n",__BASE_FILE__,line_count(),__LINE__);
+
     print_header("general");
 
     printf("CLI params:\n");
@@ -106,7 +110,6 @@ int main(int argc, char **argv)
 
     printf("Environment variable PATH: %s.\n",getenv("PATH"));
 
-    printf("My source code file is called %s and this print command is on the %ith line.\n",__BASE_FILE__,__LINE__);
     printf("Compiler version is %s.\n",__VERSION__);
 
     t1 = clock();
@@ -174,3 +177,5 @@ int main(int argc, char **argv)
 
     return 0;
   }
+
+int line_count() {return __LINE__;}
