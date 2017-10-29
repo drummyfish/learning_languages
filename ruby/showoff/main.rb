@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+require "open-uri"
 
 $FACTORIAL_OF = 10
 $SORT_LENGTH = 10000
@@ -54,7 +55,21 @@ def bubble_sort(data)
   end
 end
 
+def print_header(title,character=?-)
+  puts ?\n + title
+
+  for i in (0...title.length)
+    print character
+  end
+
+  puts ""
+end
+
 #=========================== MAIN ==============================
+
+print_header "Showing off the power of Ruby!", ?~
+
+print_header "general"
 
 t1 = Time.now
 factorial_recursive($FACTORIAL_OF)
@@ -88,3 +103,17 @@ sort_data = Array.new
 #t2 = Time.now
 
 #puts "It took me #{t2 - t1} seconds to sort an array of length #{$SORT_LENGTH} with bubble sort."
+
+print_header "networking"
+
+url = "http://google.com"
+
+puts "I'm downloading #{url}..."
+
+begin
+  open("http://google.com") {|f|
+    puts "The html is #{f.length}" " characters long."
+  }
+rescue
+  puts "I couldn't do it."
+end

@@ -11,6 +11,7 @@ import sha
 import platform
 import urllib2
 import traceback
+import socket
 
 FACTORIAL_OF = 10
 SORT_LENGTH = 10000
@@ -141,7 +142,9 @@ def main():
   print("e^(i * pi) + 1 = " + str(cmath.e ** (complex(0,1) * cmath.pi) + 1))
   print("sin: " + " ".join([str(math.sin(i / 10.0 * 2 * math.pi))[:4] for i in range(10)]))
 
-  print_header("web")
+  print_header("network")
+
+  print("My network address/name is " + str(socket.gethostbyname(socket.gethostname())) + ".")
 
   url = "http://google.com"
 
