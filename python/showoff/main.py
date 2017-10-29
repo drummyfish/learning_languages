@@ -63,90 +63,99 @@ def print_stack(depth):
     print("Showing the stack of recursive function call:")
     traceback.print_stack()
   else:
-    print_stack(depth - 1)
+    print_stack(depth - 1) 
 
 # ===================== main ========================
 
-print_header("Showing off the power of Python!","=")
+def main():
+  print_header("Showing off the power of Python!","=")
 
-print_header("general")
+  print_header("general")
 
-print("arguments: \n" + "\n".join(["  " + str(i) + ": " + sys.argv[i] for i in range(len(sys.argv))]))
+  print("My source code file is named " + sys.argv[0] + " and it has " + str(number_of_lines()) + " lines. " +
+        "This is line " + str(inspect.getframeinfo(inspect.currentframe()).lineno) + ".")
 
-print("It's " + str(datetime.datetime.now()) + ".")
+  print("arguments: \n" + "\n".join(["  " + str(i) + ": " + sys.argv[i] for i in range(len(sys.argv))]))
 
-sequence = [random.randint(1,10) for i in range(10)]
-print("10 random number sequence from 1 to 10: " + str(sequence))
-random.shuffle(sequence)
-print("the same sequence randomly shuffled: " + str(sequence))
+  print("It's " + str(datetime.datetime.now()) + ".")
 
-sequence.sort()
+  sequence = [random.randint(1,10) for i in range(10)]
+  print("10 random number sequence from 1 to 10: " + str(sequence))
+  random.shuffle(sequence)
+  print("the same sequence randomly shuffled: " + str(sequence))
 
-print("and the same sequence sorted: " + str(sequence))
+  sequence.sort()
 
-sentence = "Hello world."
+  print("and the same sequence sorted: " + str(sequence))
 
-print("md5 of \"" + sentence + "\" is " + md5.new(sentence).hexdigest() + ".")
-print("sha of \"" + sentence + "\" is " + sha.new(sentence).hexdigest() + ".")
+  sentence = "Hello world."
 
-print("Your platform type is " + platform.machine() + " with " + platform.processor() + " CPU running " +
-      platform.system() + " OS, Python version is " + platform.python_version() + " (" + platform.python_implementation() + ").")
+  print("md5 of \"" + sentence + "\" is " + md5.new(sentence).hexdigest() + ".")
+  print("sha of \"" + sentence + "\" is " + sha.new(sentence).hexdigest() + ".")
 
-print_stack(3)
+  print("Your platform type is " + platform.machine() + " with " + platform.processor() + " CPU running " +
+        platform.system() + " OS, Python version is " + platform.python_version() + " (" + platform.python_implementation() + ").")
 
-sort_data = []
+  print_stack(3)
 
-for i in range(SORT_LENGTH):
-  sort_data.append((SORT_LENGTH - i) % (SORT_LENGTH / 4))
+  sort_data = []
 
-t1 = time.time()
-bubble_sort(sort_data)
-t2 = time.time()
+  for i in range(SORT_LENGTH):
+    sort_data.append((SORT_LENGTH - i) % (SORT_LENGTH / 4))
 
-print("It took me " + str(t2 - t1) + " seconds to sort a list of length " + str(SORT_LENGTH) + " with bubble sort.")
+  t1 = time.time()
+  bubble_sort(sort_data)
+  t2 = time.time()
 
-try:
-  print("If I try to divide by zero... ")
-  a = 10 / 0
-except Exception as e:
-  print("there will be an exception: " + str(e) + ".")
+  print("It took me " + str(t2 - t1) + " seconds to sort a list of length " + str(SORT_LENGTH) + " with bubble sort.")
 
-print("")
+  try:
+    print("If I try to divide by zero... ")
+    a = 10 / 0
+  except Exception as e:
+    print("there will be an exception: " + str(e) + ".")
 
-object1 = MyClass("object1")
-object1.print_info()
-object2 = MyClass("object2")
+  print("")
 
-print("Sleep for 1 second.")
-time.sleep(1)
+  object1 = MyClass("object1")
+  object1.print_info()
+  object2 = MyClass("object2")
 
-t1 = time.time()
-fact = factorial_recursive(FACTORIAL_OF)
-t2 = time.time()
+  print("Sleep for 1 second.")
+  time.sleep(1)
 
-print("factorial of " + str(FACTORIAL_OF) + " recursively - " + str(t2 - t1) + " seconds.")
+  t1 = time.time()
+  fact = factorial_recursive(FACTORIAL_OF)
+  t2 = time.time()
 
-t1 = time.time()
-fact = factorial_iterative(FACTORIAL_OF)
-t2 = time.time()
+  print("factorial of " + str(FACTORIAL_OF) + " recursively - " + str(t2 - t1) + " seconds.")
 
-print("factorial of " + str(FACTORIAL_OF) + " iteratively - " + str(t2 - t1) + " seconds.")
+  t1 = time.time()
+  fact = factorial_iterative(FACTORIAL_OF)
+  t2 = time.time()
 
-print_header("math")
+  print("factorial of " + str(FACTORIAL_OF) + " iteratively - " + str(t2 - t1) + " seconds.")
 
-print("e^(i * pi) + 1 = " + str(cmath.e ** (complex(0,1) * cmath.pi) + 1))
-print("sin: " + " ".join([str(math.sin(i / 10.0 * 2 * math.pi))[:4] for i in range(10)]))
+  print_header("math")
 
-print_header("web")
+  print("e^(i * pi) + 1 = " + str(cmath.e ** (complex(0,1) * cmath.pi) + 1))
+  print("sin: " + " ".join([str(math.sin(i / 10.0 * 2 * math.pi))[:4] for i in range(10)]))
 
-url = "http://google.com"
+  print_header("web")
 
-print("I'm downloading " + url + "...")
+  url = "http://google.com"
 
-try:
-  html = download_web(url)
-  print("The html is " + str(len(html)) + " characters long.")
-except Exception:
-  print("I couldn't do it.")
+  print("I'm downloading " + url + "...")
 
-print("------------------")
+  try:
+    html = download_web(url)
+    print("The html is " + str(len(html)) + " characters long.")
+  except Exception:
+    print("I couldn't do it.")
+
+  print("------------------")
+
+def number_of_lines():
+  return inspect.getframeinfo(inspect.currentframe()).lineno + 2
+
+main()
