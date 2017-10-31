@@ -1,4 +1,4 @@
-## PHP
+## JavaScript
 
 - Achieve as much as possible only with the standard library.
-- Run the programs with `php -f main.php`.
+- Run with node.js (i.e. `node main.js`).
