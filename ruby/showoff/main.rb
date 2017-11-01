@@ -87,9 +87,18 @@ def recurse(depth)
   end
 end
 
+def introduce
+  puts "I'm Ruby, a scripting lang similar to Python. I'm used at"
+  puts "web a lot (e.g. Ruby on Rails framework). A lot of people like"
+  puts "my blocks - it's a syntactic feature that allows code to be"
+  puts "easily passed to a function."
+end
+
 #=========================== MAIN ==============================
 
 print_header "Showing off the power of Ruby!", ?~
+
+introduce
 
 print_header "general"
 
