@@ -81,15 +81,25 @@ void print_header(char *text)
     print_separator('-',strlen(text));
   }
 
+void introduce()
+  {
+    printf("I'm C, the super-fast, lower-level language. I was\n");
+    printf("born as a brother to UNIX and nowadays I power Linux.\n");
+    printf("Old-school hackers still prefer me to C++ as I can use\n");
+    printf("their HW just a little bit more efficiently sometimes.\n");
+  }
+
 int main(int argc, char **argv)
   {
     print_separator('~',27);
     printf("Showing off the power of C!\n");
     print_separator('~',27);
 
-    printf("My source code file is called %s and has %i lines. This is line %i.\n",__BASE_FILE__,line_count(),__LINE__);
+    introduce();
 
     print_header("general");
+
+    printf("My source code file is called %s and has %i lines. This is line %i.\n",__BASE_FILE__,line_count(),__LINE__);
 
     printf("CLI params:\n");
     

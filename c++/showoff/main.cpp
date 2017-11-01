@@ -115,9 +115,20 @@ int divide(int a, int b)
     return a / b;
   }
 
+void introduce()
+  {
+    cout << "I'm C++, an evolution of C. I try to bring OOP to" << endl;
+    cout << "the table. For many programmers I offer just the right" << endl;
+    cout << "combination of performance and comfort. You can thank" << endl;
+    cout << "me for most of your favorite games." << endl;
+  }
+
 int main()
   {
-    cout << "Showing off the power of C++!" << endl;
+    print_header("Showing off the power of C++!",'~');
+
+    introduce();
+
     print_header("general");
     
     cout << "My source code file is called " << __BASE_FILE__ << " and has " << line_count() << " lines. This is line " << __LINE__ << "." << endl;

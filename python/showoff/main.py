@@ -1,3 +1,10 @@
+"""
+Show off the power of Python with only the standard library.
+
+Miloslav Ciz, 2017
+WTFPL license
+"""
+
 import time
 import sys
 import pprint
@@ -66,10 +73,19 @@ def print_stack(depth):
   else:
     print_stack(depth - 1) 
 
+def introduce():
+  print("I'm Python, a flexible, friendly and popular scripting lang.")
+  print("I can do almost everything out of the box with minimum lines")
+  print("of code. I also keep breaking backwards compatibility to")
+  print("evolve faster. I'm being used for scripting in programs like")
+  print("Blender or GIMP.")
+
 # ===================== main ========================
 
 def main():
   print_header("Showing off the power of Python!","=")
+
+  introduce()
 
   print_header("general")
 
