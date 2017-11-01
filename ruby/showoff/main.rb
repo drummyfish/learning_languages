@@ -1,3 +1,13 @@
+=begin
+---------------------------------------------
+Show off the power of Ruby with only standard
+library.
+
+Miloslav Ciz, 2017
+WTFPL license
+---------------------------------------------
+=end
+
 #!/usr/bin/ruby
 require "open-uri"
 require "cmath"
@@ -18,7 +28,8 @@ class MyClass
   end
 
   def print_info
-    #TODO
+    puts "My class name is #{MyClass.name} and my methods are:"
+    MyClass.instance_methods(false).each { |item| puts "  #{item}" }
   end
 
   def get_name
@@ -116,32 +127,32 @@ object2 = MyClass.new("object2")
 
 sort_data = Array.new
 
-#for i in (0...$SORT_LENGTH)
-#  sort_data.push(($SORT_LENGTH - i) % ($SORT_LENGTH / 4))
-#end
+for i in (0...$SORT_LENGTH)
+  sort_data.push(($SORT_LENGTH - i) % ($SORT_LENGTH / 4))
+end
 
-#t1 = Time.now
-#bubble_sort sort_data
-#t2 = Time.now
+t1 = Time.now
+bubble_sort sort_data
+t2 = Time.now
 
-#puts "It took me #{t2 - t1} seconds to sort an array of length #{$SORT_LENGTH} with bubble sort."
+puts "It took me #{t2 - t1} seconds to sort an array of length #{$SORT_LENGTH} with bubble sort."
 
 puts "Sleep for 1 second."
 Kernel::sleep 1
 
 print_header "networking"
 
-#url = "http://google.com"
+url = "http://google.com"
 
-#puts "I'm downloading #{url}..."
+puts "I'm downloading #{url}..."
 
-#begin
-#  open("http://google.com") {|f|
-#  puts "The html is #{f.length}" " characters long."
-#  }
-#rescue
-#  puts "I couldn't do it."
-#end
+begin
+  open("http://google.com") {|f|
+  puts "The html is #{f.length}" " characters long."
+  }
+rescue
+  puts "I couldn't do it."
+end
 
 print_header "math"
 
@@ -153,4 +164,5 @@ for i in (0...15)
   print "%.2f " % Math::sin(i / 15.0 * Math::PI * 2.0)
 end
 
+puts "\n"
 puts "---------------------"
