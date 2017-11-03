@@ -88,10 +88,12 @@ def recurse(depth)
 end
 
 def introduce
-  puts "I'm Ruby, a scripting lang similar to Python. I'm used at"
+  puts <<~INTRO   # here-document, tilde makes it non-indented
+  I'm Ruby, a scripting lang similar to Python. I'm used at"
   puts "web a lot (e.g. Ruby on Rails framework). A lot of people like"
   puts "my blocks - it's a syntactic feature that allows code to be"
-  puts "easily passed to a function."
+  puts "easily passed to a function.
+  INTRO
 end
 
 #=========================== MAIN ==============================
