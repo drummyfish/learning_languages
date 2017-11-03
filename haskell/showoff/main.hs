@@ -6,6 +6,12 @@
   WTFPL license
 -------------------------------------------}
 
+import System.IO
+import Data.Time.Clock
+import Data.Time.Calendar
+import Data.Time
+import Data.Time.Clock.POSIX
+
 header :: String -> Char -> String
 header message separator =
   "\n" ++ message ++ "\n" ++ [separator | i <- [1..length(message)]] ++ "\n"
@@ -18,10 +24,12 @@ introduce =
   "zen itself.\n"
 
 main =
-  putStrLn
-    (
-      header "Showing off the power of Haskell!" '~' ++
-      introduce ++
-      header "general" '-'
-    )
-  
+  do
+    putStr
+      (
+        header "Showing off the power of Haskell!" '~' ++
+        introduce ++
+        header "general" '-'
+      )
+    ct <- getZonedTime
+    putStr ("It is " ++ (show ct) ++ ".\n")
