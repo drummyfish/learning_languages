@@ -119,6 +119,13 @@ begin
   for i := 1 to paramcount() do
     writeln('  ',paramstr(i));
 
+  write('random numbers from 1 to 10: ');
+
+  for i := 1 to 10 do
+    write(random(9) + 1,' ');
+
+  writeln();
+
   time_measure_begin();
   tmp := factorial_recursive(FACTORIAL_OF);
   sec := time_measure_end();
