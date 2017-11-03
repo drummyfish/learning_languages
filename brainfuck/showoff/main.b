@@ -2,10 +2,7 @@ show the power of brainfuck
 
 Miloslav Ciz 2017
 WTFPL license
-=====================================
-
-
-
+************************************
 
 ========== MULTIPLICATION ==========
 >          make extra space
@@ -85,6 +82,7 @@ L ++++++++++++.
   --------------------------------.
   ++++++++++++++++++++++++++++++++
 
+>
 compute the factorial now:
 
 
