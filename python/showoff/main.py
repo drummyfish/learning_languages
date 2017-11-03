@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 Show off the power of Python with only the standard library.
 
@@ -19,6 +22,7 @@ import platform
 import urllib2
 import traceback
 import socket
+import textwrap
 
 FACTORIAL_OF = 10
 SORT_LENGTH = 10000
@@ -74,11 +78,13 @@ def print_stack(depth):
     print_stack(depth - 1) 
 
 def introduce():
-  print("I'm Python, a flexible, friendly and popular scripting lang.")
-  print("I can do almost everything out of the box with minimum lines")
-  print("of code. I also keep breaking backwards compatibility to")
-  print("evolve faster. I'm being used for scripting in programs like")
-  print("Blender or GIMP.")
+  print(textwrap.dedent("""
+    I'm Python, a flexible, friendly and popular scripting lang.
+    I can do almost everything out of the box with minimum lines
+    of code. I also keep breaking backwards compatibility to
+    evolve faster. I'm being used for scripting in programs like
+    Blender or GIMP.
+    """))
 
 # ===================== main ========================
 
