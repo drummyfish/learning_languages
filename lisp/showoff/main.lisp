@@ -6,11 +6,21 @@
 (defconstant FACTORIAL_OF 10)
 (defconstant SORT_SIZE 100)
 
-(defun factorial (x)
+(defun factorial-recursive (x)
   (if (< x 2)
     1
-    (* x (factorial (- x 1)))
+    (* x (factorial-recursive (- x 1)))
   )
+)
+
+(defun factorial-iterative (x)
+  (setq result 1)
+  
+  (dotimes (i x)
+    (setq result (* result (+ i 1))) 
+  )
+
+  result
 )
 
 (defun bubble-sort (data)
@@ -25,7 +35,8 @@
 
 ;--------------------------------------
 
-(write-line (write-to-string (factorial FACTORIAL_OF)))
+(write-line (write-to-string (factorial-recursive FACTORIAL_OF)))
+(write-line (write-to-string (factorial-iterative FACTORIAL_OF)))
 
 (write-line (write-to-string (get-decoded-time)))
 
